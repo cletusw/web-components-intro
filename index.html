@@ -45,8 +45,6 @@
       var search = document.querySelector('.options input');
       var results = search.nextElementSibling;
 
-      FilterByText(results);
-
       search.addEventListener('input', function() {
         results.filterText = search.value;
       });
