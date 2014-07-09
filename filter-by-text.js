@@ -17,27 +17,18 @@ var FilterByTextElement = (function() {
   });
 
   FilterByTextProto.attachedCallback = function() {
-    this.setupDom();
-
     this.cachedListener = this.onListBoxSelect.bind(this);
     this.optionsContainer.addEventListener('core-select', this.cachedListener);
 
     this.filterText = this.getAttribute('filterText') || '';
   };
 
-  FilterByTextProto.setupDom = function() {
-    var fragment = document.createDocumentFragment();
-
-    while (this.childNodes.length > 0) {
-      fragment.appendChild(this.childNodes[0]);
-    }
-
+  FilterByTextProto.createdCallback = function() {
     var clone = document.importNode(template.content, true);
     this.matchCountElement = clone.querySelector('.matchCount');
     this.optionsContainer = clone.querySelector('.options');
 
-    this.optionsContainer.appendChild(fragment);
-    this.appendChild(clone);
+    this.createShadowRoot().appendChild(clone);
   };
 
   FilterByTextProto.detachedCallback = function() {
@@ -47,7 +38,7 @@ var FilterByTextElement = (function() {
   FilterByTextProto.filter = function(filterText) {
     var matches = 0;
 
-    Array.prototype.forEach.call(this.optionsContainer.children, function(child) {
+    Array.prototype.forEach.call(this.children, function(child) {
       var isMatch = child.textContent.indexOf(filterText) !== -1;
       matches += isMatch ? 1 : 0;
       child.classList.toggle('match', isMatch);
