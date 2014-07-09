@@ -1,12 +1,12 @@
-filter-by-text {
+:host {
   display: block;
 }
 
-filter-by-text .options :not(.match) {
+content::content :not(.match) {
   display: none;
 }
 
-filter-by-text .options {
+.options {
   border: 0;
   outline: none;
   padding: 0;
