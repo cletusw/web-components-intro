@@ -1,13 +1,18 @@
 <link rel="import" href="bower_components/basic-list-box/basic-list-box.html">
-<link rel="stylesheet" href="filter-by-text.css">
 
 <template>
+
+  <style>
+    @import 'filter-by-text.css';
+  </style>
 
   <div>
     <span class="matchCount">0</span> matches
   </div>
 
-  <basic-list-box class="options"></basic-list-box>
+  <basic-list-box class="options">
+    <content></content>
+  </basic-list-box>
 
 </template>
 <script src="filter-by-text.js"></script>
