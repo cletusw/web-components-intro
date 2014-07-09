@@ -1,25 +1,27 @@
-var FilterByText = (function() {
+var FilterByTextElement = (function() {
 
-  function create() {
-    Object.defineProperty(this, 'filterText', {
+  var FilterByTextProto = Object.create(HTMLElement.prototype, {
+    filterText: {
       get: function() {
         return this._filterText;
       },
       set: function(newValue) {
         this._filterText = newValue;
 
-        filter.call(this, newValue);
+        this.filter(newValue);
       },
       enumerable: true,
       configurable: true
-    });
+    }
+  });
 
-    setupDom.call(this);
+  FilterByTextProto.attachedCallback = function() {
+    this.setupDom();
 
     this.filterText = this.getAttribute('filterText') || '';
-  }
+  };
 
-  function setupDom() {
+  FilterByTextProto.setupDom = function() {
     var fragment = document.createDocumentFragment();
 
     while (this.childNodes.length > 0) {
@@ -31,9 +33,9 @@ var FilterByText = (function() {
     this.optionsContainer = this.querySelector('.options');
 
     this.optionsContainer.appendChild(fragment);
-  }
+  };
 
-  function filter(filterText) {
+  FilterByTextProto.filter = function(filterText) {
     var matches = 0;
 
     Array.prototype.forEach.call(this.optionsContainer.children, function(child) {
@@ -43,10 +45,10 @@ var FilterByText = (function() {
     });
 
     this.matchCountElement.textContent = matches;
-  }
-
-  return function(element) {
-    create.call(element);
   };
+
+  return document.registerElement('filter-by-text', {
+    prototype: FilterByTextProto
+  });
 
 })();
