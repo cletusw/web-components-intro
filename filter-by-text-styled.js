@@ -6,7 +6,7 @@ var FilterByTextStyledElement = (function() {
   FilterByTextStyledProto.setupDom = function() {
     FilterByTextElement.prototype.setupDom.call(this);
 
-    var clone = template.content.cloneNode(true);
+    var clone = document.importNode(template.content, true);
     this.filterTextElement = clone.querySelector('.filterText');
 
     this.insertBefore(clone, this.firstChild);

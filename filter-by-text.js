@@ -29,7 +29,7 @@ var FilterByTextElement = (function() {
       fragment.appendChild(this.childNodes[0]);
     }
 
-    var clone = template.content.cloneNode(true);
+    var clone = document.importNode(template.content, true);
     this.matchCountElement = clone.querySelector('.matchCount');
     this.optionsContainer = clone.querySelector('.options');
 
