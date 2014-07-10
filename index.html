@@ -61,6 +61,11 @@
       search.addEventListener('input', function() {
         results.filterText = search.value;
       });
+
+      results.addEventListener('change', function(event) {
+        console.log(event.detail.innerText);
+      });
+
     });
 
   </script>
