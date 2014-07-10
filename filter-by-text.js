@@ -1,5 +1,7 @@
 Polymer('filter-by-text', {
 
+  matchCount: 0,
+
   attached: function() {
     this.cachedListener = this.onListBoxSelect.bind(this);
     this.$.options.addEventListener('core-select', this.cachedListener);
@@ -20,7 +22,7 @@ Polymer('filter-by-text', {
       child.classList.toggle('match', isMatch);
     });
 
-    this.$.matchCount.textContent = matches;
+    this.matchCount = matches;
   },
 
   filterTextChanged: function(oldValue, newValue) {
