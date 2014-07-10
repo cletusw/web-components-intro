@@ -11,5 +11,6 @@ filter-by-text-styled .options :not(.match) {
 
 filter-by-text-styled .options {
   border: 0;
+  outline: none;
   padding: 0;
 }
