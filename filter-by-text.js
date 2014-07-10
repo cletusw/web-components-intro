@@ -2,18 +2,13 @@ Polymer('filter-by-text', {
 
   attached: function() {
     this.cachedListener = this.onListBoxSelect.bind(this);
-    this.optionsContainer.addEventListener('core-select', this.cachedListener);
+    this.$.options.addEventListener('core-select', this.cachedListener);
 
     this.filterText = this.getAttribute('filterText') || '';
   },
 
-  ready: function() {
-    this.matchCountElement = this.shadowRoots['filter-by-text'].querySelector('#matchCount');
-    this.optionsContainer = this.shadowRoots['filter-by-text'].querySelector('#options');
-  },
-
   detached: function() {
-    this.optionsContainer.removeEventListener('core-select', this.cachedListener);
+    this.$.options.removeEventListener('core-select', this.cachedListener);
   },
 
   filter: function(filterText) {
@@ -25,7 +20,7 @@ Polymer('filter-by-text', {
       child.classList.toggle('match', isMatch);
     });
 
-    this.matchCountElement.textContent = matches;
+    this.$.matchCount.textContent = matches;
   },
 
   filterTextChanged: function(oldValue, newValue) {
