@@ -3,14 +3,7 @@ Polymer('filter-by-text', {
   matchCount: 0,
 
   attached: function() {
-    this.cachedListener = this.onListBoxSelect.bind(this);
-    this.$.options.addEventListener('core-select', this.cachedListener);
-
     this.filterText = this.getAttribute('filterText') || '';
-  },
-
-  detached: function() {
-    this.$.options.removeEventListener('core-select', this.cachedListener);
   },
 
   filter: function(filterText) {
