@@ -8,5 +8,6 @@ filter-by-text .options :not(.match) {
 
 filter-by-text .options {
   border: 0;
+  outline: none;
   padding: 0;
 }

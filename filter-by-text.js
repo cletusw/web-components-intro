@@ -19,6 +19,9 @@ var FilterByTextElement = (function() {
   FilterByTextProto.attachedCallback = function() {
     this.setupDom();
 
+    this.cachedListener = this.onListBoxSelect.bind(this);
+    this.optionsContainer.addEventListener('core-select', this.cachedListener);
+
     this.filterText = this.getAttribute('filterText') || '';
   };
 
@@ -37,6 +40,10 @@ var FilterByTextElement = (function() {
     this.appendChild(clone);
   };
 
+  FilterByTextProto.detachedCallback = function() {
+    this.optionsContainer.removeEventListener('core-select', this.cachedListener);
+  };
+
   FilterByTextProto.filter = function(filterText) {
     var matches = 0;
 
@@ -47,6 +54,12 @@ var FilterByTextElement = (function() {
     });
 
     this.matchCountElement.textContent = matches;
+  };
+
+  FilterByTextProto.onListBoxSelect = function(event) {
+    if (event.detail.isSelected) {
+      this.dispatchEvent(new CustomEvent('change', { detail: event.detail.item }));
+    }
   };
 
   return document.registerElement('filter-by-text', {
