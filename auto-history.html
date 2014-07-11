@@ -1,0 +1,14 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+
+<polymer-element name="auto-history">
+  <template>
+
+    <link rel="stylesheet" href="auto-history.css">
+
+    <template repeat="{{ item, i in history }}">
+      <span>{{ (i === 0) ? '' : '&bull; ' }}{{ item.innerText }}</span>
+    </template>
+
+  </template>
+  <script src="auto-history.js"></script>
+</polymer-element>
