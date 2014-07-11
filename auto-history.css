@@ -1,0 +1,5 @@
+:host {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+}
