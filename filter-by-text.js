@@ -22,10 +22,8 @@ Polymer('filter-by-text', {
     this.filter(newValue);
   },
 
-  onListBoxSelect: function(event) {
-    if (event.detail.isSelected) {
-      this.dispatchEvent(new CustomEvent('change', { detail: event.detail.item }));
-    }
+  selectedItemChanged: function(oldValue, newValue) {
+    this.dispatchEvent(new CustomEvent('change', { detail: newValue }));
   }
 
 });
