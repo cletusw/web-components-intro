@@ -1,5 +1,6 @@
 <link rel="import" href="bower_components/polymer/polymer.html">
 <link rel="import" href="filter-by-text.html">
+<link rel="import" href="auto-history.html">
 
 <polymer-element name="filter-by-text-styled" extends="filter-by-text" noscript>
   <template>
@@ -9,6 +10,8 @@
     <div>Searching for "{{ filterText }}"</div>
 
     <shadow></shadow>
+
+    <auto-history track="{{ selectedItem }}"></auto-history>
 
   </template>
 </polymer-element>
