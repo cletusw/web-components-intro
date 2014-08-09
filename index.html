@@ -14,6 +14,8 @@
     }
   </style>
 
+  <link rel="stylesheet" href="filter-by-text.css">
+
 </head>
 <body>
 
@@ -33,6 +35,25 @@
       <div>Watermelon</div>
     </filter-by-text>
   </div>
+
+  <script src="filter-by-text.js"></script>
+
+  <script>
+
+    (function() {
+
+      var search = document.querySelector('.options input');
+      var results = search.nextElementSibling;
+
+      FilterByText(results);
+
+      search.addEventListener('input', function() {
+        results.filterText = search.value;
+      });
+
+    })();
+
+  </script>
 
 </body>
 </html>

@@ -1,0 +1,12 @@
+filter-by-text {
+  display: block;
+}
+
+filter-by-text .options :not(.match) {
+  display: none;
+}
+
+filter-by-text .options {
+  border: 0;
+  padding: 0;
+}
