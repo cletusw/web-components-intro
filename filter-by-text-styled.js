@@ -1,15 +1,15 @@
 var FilterByTextStyledElement = (function() {
 
+  var template = document.currentScript.previousElementSibling;
   var FilterByTextStyledProto = Object.create(FilterByTextElement.prototype);
 
   FilterByTextStyledProto.setupDom = function() {
     FilterByTextElement.prototype.setupDom.call(this);
 
-    var div = document.createElement('div');
-    div.innerHTML = 'Searching for "<span class="filterText"></span>"';
-    this.filterTextElement = div.querySelector('.filterText');
+    var clone = template.content.cloneNode(true);
+    this.filterTextElement = clone.querySelector('.filterText');
 
-    this.insertBefore(div, this.firstChild);
+    this.insertBefore(clone, this.firstChild);
   };
 
   FilterByTextStyledProto.filter = function(filterText) {
