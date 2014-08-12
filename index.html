@@ -9,12 +9,14 @@
     }
 
     input,
-    filter-by-text {
+    filter-by-text,
+    filter-by-text-styled {
       margin-bottom: 10px;
     }
   </style>
 
   <link rel="stylesheet" href="filter-by-text.css">
+  <link rel="stylesheet" href="filter-by-text-styled.css">
 
 </head>
 <body>
@@ -34,22 +36,35 @@
       <div>Prickly Pear</div>
       <div>Watermelon</div>
     </filter-by-text>
+
+    <input placeholder="Search" value="pple">
+    <filter-by-text-styled filterText="pple">
+      <div>Apple</div>
+      <div>Blueberry</div>
+      <div>Currant</div>
+      <div>Goji berry</div>
+      <div>Honeydew</div>
+      <div>Lemon</div>
+      <div>Mangosteen</div>
+      <div>Papaya</div>
+      <div>Pineapple</div>
+      <div>Prickly Pear</div>
+      <div>Watermelon</div>
+    </filter-by-text-styled>
   </div>
 
   <script src="filter-by-text.js"></script>
+  <script src="filter-by-text-styled.js"></script>
 
   <script>
 
-    (function() {
-
-      var search = document.querySelector('.options input');
+    Array.prototype.forEach.call(document.querySelectorAll('.options input'), function(search) {
       var results = search.nextElementSibling;
 
       search.addEventListener('input', function() {
         results.filterText = search.value;
       });
-
-    })();
+    });
 
   </script>
 
