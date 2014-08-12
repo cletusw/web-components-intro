@@ -1,5 +1,6 @@
 var FilterByTextElement = (function() {
 
+  var template = document.currentScript.previousElementSibling;
   var FilterByTextProto = Object.create(HTMLElement.prototype, {
     filterText: {
       get: function() {
@@ -28,11 +29,12 @@ var FilterByTextElement = (function() {
       fragment.appendChild(this.childNodes[0]);
     }
 
-    this.innerHTML = '<div><span class="matchCount">0</span> matches</div><section class="options"></section>';
-    this.matchCountElement = this.querySelector('.matchCount');
-    this.optionsContainer = this.querySelector('.options');
+    var clone = template.content.cloneNode(true);
+    this.matchCountElement = clone.querySelector('.matchCount');
+    this.optionsContainer = clone.querySelector('.options');
 
     this.optionsContainer.appendChild(fragment);
+    this.appendChild(clone);
   };
 
   FilterByTextProto.filter = function(filterText) {
