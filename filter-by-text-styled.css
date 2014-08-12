@@ -1,0 +1,15 @@
+filter-by-text-styled {
+  background-color: aqua;
+  border: 1px solid black;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  display: block;
+}
+
+filter-by-text-styled .options :not(.match) {
+  display: none;
+}
+
+filter-by-text-styled .options {
+  border: 0;
+  padding: 0;
+}
