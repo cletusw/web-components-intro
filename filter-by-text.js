@@ -1,15 +1,5 @@
 Polymer('filter-by-text', {
 
-  get filterText() {
-    return this._filterText;
-  },
-
-  set filterText(newValue) {
-    this._filterText = newValue;
-
-    this.filter(newValue);
-  },
-
   attached: function() {
     this.cachedListener = this.onListBoxSelect.bind(this);
     this.optionsContainer.addEventListener('core-select', this.cachedListener);
@@ -36,6 +26,10 @@ Polymer('filter-by-text', {
     });
 
     this.matchCountElement.textContent = matches;
+  },
+
+  filterTextChanged: function(oldValue, newValue) {
+    this.filter(newValue);
   },
 
   onListBoxSelect: function(event) {
