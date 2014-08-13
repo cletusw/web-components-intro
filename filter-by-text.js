@@ -1,41 +1,32 @@
-var FilterByTextElement = (function() {
+Polymer('filter-by-text', {
 
-  var template = document.currentScript.previousElementSibling;
-  var FilterByTextProto = Object.create(HTMLElement.prototype, {
-    filterText: {
-      get: function() {
-        return this._filterText;
-      },
-      set: function(newValue) {
-        this._filterText = newValue;
+  get filterText() {
+    return this._filterText;
+  },
 
-        this.filter(newValue);
-      },
-      enumerable: true,
-      configurable: true
-    }
-  });
+  set filterText(newValue) {
+    this._filterText = newValue;
 
-  FilterByTextProto.attachedCallback = function() {
+    this.filter(newValue);
+  },
+
+  attached: function() {
     this.cachedListener = this.onListBoxSelect.bind(this);
     this.optionsContainer.addEventListener('core-select', this.cachedListener);
 
     this.filterText = this.getAttribute('filterText') || '';
-  };
+  },
 
-  FilterByTextProto.createdCallback = function() {
-    var clone = document.importNode(template.content, true);
-    this.matchCountElement = clone.querySelector('#matchCount');
-    this.optionsContainer = clone.querySelector('#options');
+  ready: function() {
+    this.matchCountElement = this.shadowRoots['filter-by-text'].querySelector('#matchCount');
+    this.optionsContainer = this.shadowRoots['filter-by-text'].querySelector('#options');
+  },
 
-    this.createShadowRoot().appendChild(clone);
-  };
-
-  FilterByTextProto.detachedCallback = function() {
+  detached: function() {
     this.optionsContainer.removeEventListener('core-select', this.cachedListener);
-  };
+  },
 
-  FilterByTextProto.filter = function(filterText) {
+  filter: function(filterText) {
     var matches = 0;
 
     Array.prototype.forEach.call(this.children, function(child) {
@@ -45,16 +36,12 @@ var FilterByTextElement = (function() {
     });
 
     this.matchCountElement.textContent = matches;
-  };
+  },
 
-  FilterByTextProto.onListBoxSelect = function(event) {
+  onListBoxSelect: function(event) {
     if (event.detail.isSelected) {
       this.dispatchEvent(new CustomEvent('change', { detail: event.detail.item }));
     }
-  };
+  }
 
-  return document.registerElement('filter-by-text', {
-    prototype: FilterByTextProto
-  });
-
-})();
+});

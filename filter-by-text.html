@@ -1,18 +1,19 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
 <link rel="import" href="bower_components/basic-list-box/basic-list-box.html">
 
-<template>
+<polymer-element name="filter-by-text">
+  <template>
 
-  <style>
-    @import 'filter-by-text.css';
-  </style>
+    <link rel="stylesheet" href="filter-by-text.css">
 
-  <div>
-    <span id="matchCount">0</span> matches
-  </div>
+    <div>
+      <span id="matchCount">0</span> matches
+    </div>
 
-  <basic-list-box id="options" class="options">
-    <content></content>
-  </basic-list-box>
+    <basic-list-box id="options" class="options">
+      <content></content>
+    </basic-list-box>
 
-</template>
-<script src="filter-by-text.js"></script>
+  </template>
+  <script src="filter-by-text.js"></script>
+</polymer-element>
