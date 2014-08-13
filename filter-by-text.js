@@ -25,8 +25,8 @@ var FilterByTextElement = (function() {
 
   FilterByTextProto.createdCallback = function() {
     var clone = document.importNode(template.content, true);
-    this.matchCountElement = clone.querySelector('.matchCount');
-    this.optionsContainer = clone.querySelector('.options');
+    this.matchCountElement = clone.querySelector('#matchCount');
+    this.optionsContainer = clone.querySelector('#options');
 
     this.createShadowRoot().appendChild(clone);
   };
