@@ -7,7 +7,7 @@ var FilterByTextStyledElement = (function() {
     FilterByTextElement.prototype.createdCallback.call(this);
 
     var clone = document.importNode(template.content, true);
-    this.filterTextElement = clone.querySelector('.filterText');
+    this.filterTextElement = clone.querySelector('#filterText');
 
     this.createShadowRoot().appendChild(clone);
   };
