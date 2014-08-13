@@ -1,25 +1,15 @@
-var FilterByTextStyledElement = (function() {
+Polymer('filter-by-text-styled', {
 
-  var template = document.currentScript.previousElementSibling;
-  var FilterByTextStyledProto = Object.create(FilterByTextElement.prototype);
+  ready: function() {
+    this.super();
 
-  FilterByTextStyledProto.createdCallback = function() {
-    FilterByTextElement.prototype.createdCallback.call(this);
+    this.filterTextElement = this.shadowRoots['filter-by-text-styled'].querySelector('#filterText');
+  },
 
-    var clone = document.importNode(template.content, true);
-    this.filterTextElement = clone.querySelector('#filterText');
-
-    this.createShadowRoot().appendChild(clone);
-  };
-
-  FilterByTextStyledProto.filter = function(filterText) {
-    FilterByTextElement.prototype.filter.call(this, filterText);
+  filter: function(filterText) {
+    this.super(arguments);
 
     this.filterTextElement.textContent = filterText;
   }
 
-  return document.registerElement('filter-by-text-styled', {
-    prototype: FilterByTextStyledProto
-  });
-
-})();
+});
