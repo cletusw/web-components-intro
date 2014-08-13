@@ -1,16 +1,17 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
 <link rel="import" href="filter-by-text.html">
 
-<template>
+<polymer-element name="filter-by-text-styled" extends="filter-by-text">
+  <template>
 
-  <style>
-    @import 'filter-by-text-styled.css';
-  </style>
+    <link rel="stylesheet" href="filter-by-text-styled.css">
 
-  <div>
-    Searching for "<span id="filterText"></span>"
-  </div>
+    <div>
+      Searching for "<span id="filterText"></span>"
+    </div>
 
-  <shadow></shadow>
+    <shadow></shadow>
 
-</template>
-<script src="filter-by-text-styled.js"></script>
+  </template>
+  <script src="filter-by-text-styled.js"></script>
+</polymer-element>
