@@ -1,0 +1,21 @@
+{
+  "name": "basic-selector",
+  "description": "Extends core-selector to support reprojected content",
+  "version": "0.0.1",
+  "license": "MIT",
+  "main": "basic-selector.html",
+  "dependencies": {
+    "basic-element": "basic-web-components/basic-element#master",
+    "core-selector": "Polymer/core-selector#master"
+  },
+  "devDependencies": {
+    "basic-framed-content": "basic-web-components/basic-framed-content#master"
+  },
+  "keywords": [
+    "basic-web-components",
+    "web-components"
+  ],
+  "ignore": [
+    "**/.*"
+  ]
+}
